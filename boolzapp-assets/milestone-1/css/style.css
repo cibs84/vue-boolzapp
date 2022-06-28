@@ -167,7 +167,38 @@ main {
 .main-content-mid {
     flex-grow: 1;
     overflow-y: auto;
+    padding: 2.5rem 4.5rem;
+    display: flex;
+    flex-direction: column;
 }
+.main-content-mid .chat-msg {
+    padding: 6px 7px 8px 9px;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    min-width: 11.5rem;
+    max-width: 50%;
+    margin-bottom: 0.2rem;
+    flex-grow: 0;
+}
+.main-content-mid .chat-msg.received {
+    background-color: white;
+    align-self: flex-start;
+}
+.main-content-mid .chat-msg.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+.main-content-mid .chat-msg div {
+    
+}
+.main-content-mid .chat-msg span {
+    display: block;
+    text-align: right;
+    color: #b7babd;
+    font-size: 0.8rem;
+}
+
+
 /* Main Content - BOTTOM */
 .main-content-bottom {
     height: 4rem;
