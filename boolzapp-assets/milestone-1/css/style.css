@@ -8,19 +8,56 @@
 /* COMMON */
 body {
     background-color: lightblue;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, "Fira Sans", sans-serif;
 }
 .container {
     width: 80%;
     margin: 0 auto;
     height: 100%;
 }
-
-
+img {
+    max-width: 100%;
+}
+.avatar-image {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
 /* App Wrapper */
 #app-wrapper {
     background-color: #009588;
     height: 100vh;
     padding: 1.5rem 0;
+}
+/* Person Item */
+.person-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+    height: 4rem;
+    background-color: #eaeaea;
+    border: 1px solid lightgray;
+}
+.person-item .item {
+    vertical-align: middle;
+    cursor: pointer;
+}
+.person-item .item img {
+    vertical-align: middle;
+}
+.person-item .item span {
+    vertical-align: middle;
+    font-weight: 500;
+}
+.person-item .icons span {
+    margin-left: 1rem;
+    color: #b1b1b1;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.person-item .icons span:last-child {
+    margin-right: 0.5rem;
 }
 
 
@@ -37,29 +74,79 @@ main {
 #sidebar {
     width: calc(100% / 3);
     height: 100%;
-    background-color: orange;
     display: flex;
     flex-direction: column;
 }
 /* Sidebar-Header */
-#sidebar .sidebar-header > * {
-    height: 3rem;
-    background-color: lightslategray;
-    border: 1px solid green;
-}
-#sidebar .sidebar-header .main-settings {
-
-}
 #sidebar .sidebar-header .notify-settings {
-
+    background-color: #8edafb;
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    cursor: pointer;
+}
+#sidebar .sidebar-header .notify-settings a {
+    display: block;
+    color: #517889;
+    font-size: 0.7rem;
+}
+#sidebar .sidebar-header .notify-settings span.bell-icon {
+    background-color: #fff;
+    border-radius: 50%;
+    color: #8edafb;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
 }
 #sidebar .sidebar-header .filter-contacts {
-
+    padding: 0.4rem;
+    background-color: #fafafa;
+    height: auto;
+}
+#sidebar .sidebar-header .filter-contacts > div {
+    background-color: white;
+    border-radius: 0.3rem;
+    border: 1px solid lightgray;
+    padding: 4.5px 1rem;
+}
+#sidebar .sidebar-header .filter-contacts span.search-icon {
+    border: none;
+    font-size: 1rem;
+    color: #b6b9bc;
+    margin: 0rem 1.7rem 0rem 0.6rem;
+    vertical-align: middle;
+}
+#sidebar .sidebar-header .filter-contacts input {
+    border: none;
+    font-size: 1rem;
+    width: 80%;
+    vertical-align: middle;
+    outline: none;
 }
 /* Sidebar-Main */
 #sidebar .sidebar-main {
     flex-grow: 1;
     overflow-y: auto;
+    background: white;
+}
+#sidebar .sidebar-main {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: #d3d3d3;
+}
+#sidebar .sidebar-main .contact-item {
+    cursor: pointer;
+    border-bottom: 1px solid #d3d3d3;
+    flex-grow: 1;
+    padding: 0.6rem;
+}
+#sidebar .sidebar-main .contact-item img {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+#sidebar .sidebar-main .contact-item span {
+    vertical-align: top;
+    font-weight: 500;
 }
 
 
@@ -70,13 +157,11 @@ main {
     background-color: lightblue;
     display: flex;
     flex-direction: column;
+    background-image: url(../img/mine.jpg);
 }
 /* Main Content - TOP */
 .main-content-top {
-    height: 3rem;
-    background-color: lightslategray;
-    border: 1px solid green;
-    flex-shrink: 0;
+    
 }
 /* Main Content - MIDDLE */
 .main-content-mid {
@@ -85,8 +170,28 @@ main {
 }
 /* Main Content - BOTTOM */
 .main-content-bottom {
-    height: 3rem;
-    background-color: lightslategray;
-    border: 1px solid green;
-    flex-shrink: 0;
+    height: 4rem;
+    background-color: rgba(234, 234, 234, 0.5);
+    border: 1px solid lightgray;
 }
+.main-content-bottom .input-group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 4rem;
+}
+.main-content-bottom .input-group input {
+    flex-grow: 1;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    border: 1px solid #d3d3d3;
+    padding: 13.5px 1rem;
+}
+.main-content-bottom .input-group .icon {
+    margin: 0 1.5rem;
+    font-size: 1.5rem;
+    color: #6a7376;
+}
+
+
