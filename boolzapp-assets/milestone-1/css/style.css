@@ -115,6 +115,7 @@ main {
     color: #b6b9bc;
     margin: 0rem 1.7rem 0rem 0.6rem;
     vertical-align: middle;
+    cursor: pointer;
 }
 #sidebar .sidebar-header .filter-contacts input {
     border: none;
@@ -130,7 +131,7 @@ main {
     background: white;
 }
 #sidebar .sidebar-main {
-    
+
 }
 #sidebar .sidebar-main .contact-item {
     cursor: pointer;
@@ -222,6 +223,7 @@ main {
     margin: 0 1.5rem;
     font-size: 1.5rem;
     color: #6a7376;
+    cursor: pointer;
 }
 
 
