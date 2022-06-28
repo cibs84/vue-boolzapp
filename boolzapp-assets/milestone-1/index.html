@@ -33,7 +33,7 @@
                                 <!-- User -->
                                 <div class="user-item item">
                                     <img class="avatar-image" src="img/avatar_io.jpg" alt="">
-                                    <span>Nome Utente</span>
+                                    <span class="name">Nome Utente</span>
                                 </div>
 
                                 <!-- Icons -->
@@ -60,7 +60,7 @@
                                 </span>
 
                                 <!-- Text -->
-                                <span>
+                                <span class="text">
                                     Ricevi notifiche di nuovi messaggi
                                     <a href="#">Attiva notifiche desktop</a>
                                 </span>
@@ -88,7 +88,7 @@
                             <div class="contact-item" v-for="(singleContact, IndexSingleContact) in contacts">
                                 <!-- <img class="avatar-image" src="img/avatar_io.jpg" alt=""> -->
                                 <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
-                                <span>{{ singleContact.name }}</span>
+                                <span class="name">{{ singleContact.name }}</span>
                             </div>
                         </div>
                    </aside>
@@ -103,7 +103,10 @@
                             <!-- User -->
                             <div class="main-content-item item">
                                 <img class="avatar-image" src="img/avatar_3.jpg" alt="">
-                                <span>Samuele</span>
+                                <div class="text">
+                                    <span class="name">Samuele</span>
+                                    <span class="last-access">Ultimo accesso oggi alle 19:57</span>
+                                </div>
                             </div>
 
                             <!-- Icons -->
