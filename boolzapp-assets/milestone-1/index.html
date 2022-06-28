@@ -85,9 +85,10 @@
                         <!-- Sidebar - Main -->
                         <div class="sidebar-main">
                             <!-- Contact -->
-                            <div class="contact-item">
-                                <img class="avatar-image" src="img/avatar_io.jpg" alt="">
-                                <span>Michele</span>
+                            <div class="contact-item" v-for="(singleContact, IndexSingleContact) in contacts">
+                                <!-- <img class="avatar-image" src="img/avatar_io.jpg" alt=""> -->
+                                <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
+                                <span>{{ singleContact.name }}</span>
                             </div>
                         </div>
                    </aside>

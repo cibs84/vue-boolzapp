@@ -130,9 +130,7 @@ main {
     background: white;
 }
 #sidebar .sidebar-main {
-    display: flex;
-    align-items: flex-start;
-    border-bottom: #d3d3d3;
+    
 }
 #sidebar .sidebar-main .contact-item {
     cursor: pointer;
