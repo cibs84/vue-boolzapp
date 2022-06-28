@@ -9,4 +9,84 @@
 body {
     background-color: lightblue;
 }
+.container {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
 
+
+/* App Wrapper */
+#app-wrapper {
+    background-color: #009588;
+    height: 100vh;
+    padding: 1.5rem 0;
+}
+
+
+/* MAIN */
+main {
+    border: 1px solid red;
+    background-color: lightgreen;
+    height: 100%;
+    display: flex;
+}
+
+
+/* SIDEBAR */
+#sidebar {
+    width: calc(100% / 3);
+    height: 100%;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+}
+/* Sidebar-Header */
+#sidebar .sidebar-header > * {
+    height: 3rem;
+    background-color: lightslategray;
+    border: 1px solid green;
+}
+#sidebar .sidebar-header .main-settings {
+
+}
+#sidebar .sidebar-header .notify-settings {
+
+}
+#sidebar .sidebar-header .filter-contacts {
+
+}
+/* Sidebar-Main */
+#sidebar .sidebar-main {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+
+/* Main Content */
+#main-content {
+    width: calc(100% / 3 * 2);
+    height: 100%;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+}
+/* Main Content - TOP */
+.main-content-top {
+    height: 3rem;
+    background-color: lightslategray;
+    border: 1px solid green;
+    flex-shrink: 0;
+}
+/* Main Content - MIDDLE */
+.main-content-mid {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+/* Main Content - BOTTOM */
+.main-content-bottom {
+    height: 3rem;
+    background-color: lightslategray;
+    border: 1px solid green;
+    flex-shrink: 0;
+}
