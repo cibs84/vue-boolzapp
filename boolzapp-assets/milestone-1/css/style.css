@@ -218,6 +218,7 @@ main {
     border-radius: 0.3rem;
     border: 1px solid #d3d3d3;
     padding: 13.5px 1rem;
+    outline: none;
 }
 .main-content-bottom .input-group .icon {
     margin: 0 1.5rem;
