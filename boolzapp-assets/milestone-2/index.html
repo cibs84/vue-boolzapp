@@ -85,7 +85,7 @@
                         <!-- Sidebar - Main -->
                         <div class="sidebar-main">
                             <!-- Contact -->
-                            <div class="contact-item" v-for="(singleContact, IndexSingleContact) in contacts">
+                            <div class="contact-item" v-for="(singleContact, IndexSingleContact) in contacts" @click="setActiveContact(IndexSingleContact)">
                                 <!-- <img class="avatar-image" src="img/avatar_io.jpg" alt=""> -->
                                 <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
                                 <span class="avatar-name">{{ singleContact.name }}</span>
@@ -124,13 +124,13 @@
                         </div>
 
                         <!-- Main Content - MIDDLE -->
-                        <div class="main-content-mid">
+                        <div class="main-content-mid" v-for="(singleContact, indexSingleContact) in contacts" v-if="singleContact.visible">
                             <!-- Chat Messages -->
-                            <div class="chat-msg received">
-                                <div class="chat-msg-text">La Marianna va in campagna</div>
-                                <span class="chat-msg-date">28/03/2020 10:10:40</span>
+                            <div class="chat-msg" :class="{received: singleMsg.status === 'received', sent: singleMsg.status === 'sent'}" v-for="singleMsg in singleContact.messages">
+                                <div class="chat-msg-text">{{singleMsg.text}}</div>
+                                <span class="chat-msg-date">{{singleMsg.date}}</span>
                             </div>
-                            <div class="chat-msg sent">
+                            <!-- <div class="chat-msg sent">
                                 <div class="chat-msg-text">Sicuro di non aver sbagliato chat?</div>
                                 <span class="chat-msg-date">28/03/2020 10:20:10</span>
                             </div>
@@ -147,7 +147,7 @@
                                 <div class="chat-msg-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis vel nihil fuga, expedita sit numquam reprehenderit velit laborum sed ipsum rem corrupti incidunt temporibus ratione quod ducimus, vitae iusto exercitationem.
                                 Maiores illo eaque iure ipsa libero molestias dignissimos debitis sed alias. Iure, distinctio quo enim rerum dolorum necessitatibus vitae! Omnis ipsa officiis nisi. Molestiae recusandae ratione totam autem amet blanditiis.</div>
                                 <span class="chat-msg-date">28/03/2020 16:15:22</span>
-                            </div>
+                            </div> -->
                         </div>
 
                         <!-- Main Content - BOTTOM -->
