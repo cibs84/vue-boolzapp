@@ -11,6 +11,7 @@ var app = new Vue (
                     name: 'Michele',
                     avatar: '_1',
                     visible: true,
+                    shownByFilter: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -33,6 +34,7 @@ var app = new Vue (
                     name: 'Fabio',
                     avatar: '_2',
                     visible: false,
+                    shownByFilter: true,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -55,6 +57,7 @@ var app = new Vue (
                     name: 'Samuele',
                     avatar: '_3',
                     visible: false,
+                    shownByFilter: true,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -77,6 +80,7 @@ var app = new Vue (
                     name: 'Luisa',
                     avatar: '_4',
                     visible: false,
+                    shownByFilter: true,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -97,7 +101,8 @@ var app = new Vue (
                 text: "",
                 status: 'sent'
             },
-            indexVisibleContact: null
+            indexVisibleContact: null,
+            inputFilterContacts: "",
         },
         methods: {
             setActiveContact(index) {
@@ -148,6 +153,21 @@ var app = new Vue (
                 this.createNewMessage();
                 
             },
+            showFilteredContacts() {
+                // Per ogni contatto:
+                this.contacts.forEach(thisContact => {
+                    // Normalizzo le stringhe da confrontare rendendo tutte le lettere minuscole
+                    const inputFilterLower = this.inputFilterContacts.toLowerCase();
+                    const contactNameLower = thisContact.name.toLowerCase();
+                    // SE la stringa del filtro è presente nella proprietà name del contatto ALLORA imposta la sua proprietà 'shownByFilter' su true
+                    if (contactNameLower.includes(inputFilterLower)) {
+                        thisContact.shownByFilter = true;
+                    // ALTRIMENTI la imposteremo su false
+                    } else {
+                        thisContact.shownByFilter = false;
+                    }
+                });
+            }
         }
     }
 );
