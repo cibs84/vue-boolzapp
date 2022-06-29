@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>boolzapp</title>
+
+    <!-- Link - Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Link - Fontawesome 6.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link - style.css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Vue.js -->
+    <div id="root">
+
+        <!-- App Wrapper -->
+        <div id="app-wrapper">
+
+            <div class="container">
+
+                <!-- MAIN -->
+                <main>
+                   <!-- Sidebar  -->
+                   <aside id="sidebar">
+                        <!-- Sidebar - Header -->
+                        <div class="sidebar-header">
+                            <div class="main-settings person-item">
+                                
+                                <!-- User -->
+                                <div class="user-item item">
+                                    <img class="avatar-image" src="img/avatar_io.jpg" alt="">
+                                    <span class="avatar-name">Nome Utente</span>
+                                </div>
+
+                                <!-- Icons -->
+                                <div class="icons">
+                                    <span>
+                                        <i class="fa-solid fa-circle-notch"></i>
+                                    </span>
+                                    <span>
+                                        <i class="fa-solid fa-message"></i>
+                                    </span>
+                                    <span>
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+
+                            <!-- Notify Settings -->
+                            <div class="notify-settings">
+
+                                <!-- Icon -->
+                                <span class="bell-icon">
+                                    <i class="fa-solid fa-bell-slash"></i>
+                                </span>
+
+                                <!-- Text -->
+                                <span class="text">
+                                    Ricevi notifiche di nuovi messaggi
+                                    <a href="#">Attiva notifiche desktop</a>
+                                </span>
+                            </div>
+
+
+                            <!-- Filter Contacts -->
+                            <div class="filter-contacts">
+                                <div>
+                                    <!-- Icon -->
+                                    <label class="search-icon" for="contact-search">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </label>
+
+                                    <!-- Input -->
+                                    <input type="text" id="contact-search" placeholder="Cerca o inizia una nuova chat">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Sidebar - Main -->
+                        <div class="sidebar-main">
+                            <!-- Contact -->
+                            <div class="contact-item" v-for="(singleContact, IndexSingleContact) in contacts" @click="setActiveContact(IndexSingleContact)">
+                                <!-- <img class="avatar-image" src="img/avatar_io.jpg" alt=""> -->
+                                <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
+                                <span class="avatar-name">{{ singleContact.name }}</span>
+                            </div>
+                        </div>
+                   </aside>
+
+
+                   <!-- Main Content -->
+                   <div id="main-content">
+
+                        <!-- Main Content - TOP -->
+                        <div class="main-content-top person-item">
+                                
+                            <!-- User -->
+                            <div class="main-content-item item">
+                                <img class="avatar-image" src="img/avatar_3.jpg" alt="">
+                                <div class="text">
+                                    <span class="avatar-name">Samuele</span>
+                                    <span class="last-access">Ultimo accesso oggi alle 19:57</span>
+                                </div>
+                            </div>
+
+                            <!-- Icons -->
+                            <div class="icons">
+                                <span>
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-paperclip"></i>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Main Content - MIDDLE -->
+                        <div class="main-content-mid" v-for="(singleContact, indexSingleContact) in contacts" v-if="singleContact.visible">
+                            <!-- Chat Messages -->
+                            <div class="chat-msg" :class="{received: singleMsg.status === 'received', sent: singleMsg.status === 'sent'}" v-for="singleMsg in singleContact.messages">
+                                <div class="chat-msg-text">{{singleMsg.text}}</div>
+                                <span class="chat-msg-date">{{singleMsg.date}}</span>
+                            </div>
+                            <!-- <div class="chat-msg sent">
+                                <div class="chat-msg-text">Sicuro di non aver sbagliato chat?</div>
+                                <span class="chat-msg-date">28/03/2020 10:20:10</span>
+                            </div>
+                            <div class="chat-msg received">
+                                <div class="chat-msg-text">Ah scusa!</div>
+                                <span class="chat-msg-date">28/03/2020 16:15:22</span>
+                            </div>
+                            <div class="chat-msg sent">
+                                <div class="chat-msg-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nam odio assumenda ducimus quos eius minima adipisci dolorum natus magnam, earum laboriosam iusto fugiat quisquam, voluptatem nihil aliquam libero amet.
+                                Consectetur soluta veniam pariatur doloribus rem facere alias tenetur autem? Adipisci, ipsum. Delectus voluptatum explicabo sed quas odit commodi, quo natus quis pariatur sunt possimus qui voluptas omnis dolore iusto.</div>
+                                <span class="chat-msg-date">28/03/2020 10:20:10</span>
+                            </div>
+                            <div class="chat-msg received">
+                                <div class="chat-msg-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis vel nihil fuga, expedita sit numquam reprehenderit velit laborum sed ipsum rem corrupti incidunt temporibus ratione quod ducimus, vitae iusto exercitationem.
+                                Maiores illo eaque iure ipsa libero molestias dignissimos debitis sed alias. Iure, distinctio quo enim rerum dolorum necessitatibus vitae! Omnis ipsa officiis nisi. Molestiae recusandae ratione totam autem amet blanditiis.</div>
+                                <span class="chat-msg-date">28/03/2020 16:15:22</span>
+                            </div> -->
+                        </div>
+
+                        <!-- Main Content - BOTTOM -->
+                        <div class="main-content-bottom">
+                            <!-- Input Group -->
+                            <div class="input-group">
+                                <!-- Icon -->
+                                <span class="icon">
+                                    <i class="fa-regular fa-face-smile"></i>
+                                </span>
+                                
+                                <!-- Input -->
+                                <input type="text" placeholder="Scrivi un messaggio">
+                                
+                                <!-- Icon -->
+                                <span class="icon">
+                                    <i class="fa-solid fa-microphone"></i>
+                                </span>
+                            </div>
+                        </div>
+                   </div>
+                </main>
+            </div>
+
+        </div>
+
+    </div>
+    <!-------------------- End - Vue.js --------------------->
+
+
+    <!-- Link - script.js -->
+    <script src="js/script.js"></script>
+</body>
+</html>
