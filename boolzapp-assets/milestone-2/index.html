@@ -85,8 +85,7 @@
                         <!-- Sidebar - Main -->
                         <div class="sidebar-main">
                             <!-- Contact -->
-                            <div class="contact-item" v-for="(singleContact, IndexSingleContact) in contacts" @click="setActiveContact(IndexSingleContact)">
-                                <!-- <img class="avatar-image" src="img/avatar_io.jpg" alt=""> -->
+                            <div class="contact-item" :class="{ active: singleContact.visible }" v-for="(singleContact, IndexSingleContact) in contacts" @click="setActiveContact(IndexSingleContact)">
                                 <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
                                 <span class="avatar-name">{{ singleContact.name }}</span>
                             </div>

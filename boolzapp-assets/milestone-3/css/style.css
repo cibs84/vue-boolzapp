@@ -140,16 +140,14 @@ main {
     overflow-y: auto;
     background: white;
 }
-#sidebar .sidebar-main {
-
-}
 #sidebar .sidebar-main .contact-item {
     cursor: pointer;
     border-bottom: 1px solid #d3d3d3;
     flex-grow: 1;
     padding: 0.6rem;
 }
-#sidebar .sidebar-main .contact-item:hover {
+#sidebar .sidebar-main .contact-item:hover,
+#sidebar .sidebar-main .contact-item.active {
     background-color: #e9ebeb;
 }
 #sidebar .sidebar-main .contact-item img {
@@ -172,9 +170,7 @@ main {
     background-image: url(../img/mine.jpg);
 }
 /* Main Content - TOP */
-.main-content-top {
-    
-}
+
 /* Main Content - MIDDLE */
 .main-content-mid {
     flex-grow: 1;
@@ -199,9 +195,6 @@ main {
 .main-content-mid .chat-msg.sent {
     background-color: #d5f9ba;
     align-self: flex-end;
-}
-.main-content-mid .chat-msg div.chat-msg-text {
-    
 }
 .main-content-mid .chat-msg span.chat-msg-date {
     display: block;
@@ -238,5 +231,3 @@ main {
     color: #6a7376;
     cursor: pointer;
 }
-
-
