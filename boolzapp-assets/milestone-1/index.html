@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>boolzapp</title>
 
     <!-- Link - Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
@@ -33,7 +33,7 @@
                                 <!-- User -->
                                 <div class="user-item item">
                                     <img class="avatar-image" src="img/avatar_io.jpg" alt="">
-                                    <span class="name">Nome Utente</span>
+                                    <span class="avatar-name">Nome Utente</span>
                                 </div>
 
                                 <!-- Icons -->
@@ -71,12 +71,12 @@
                             <div class="filter-contacts">
                                 <div>
                                     <!-- Icon -->
-                                    <span class="search-icon">
+                                    <label class="search-icon" for="contact-search">
                                         <i class="fa-solid fa-magnifying-glass"></i>
-                                    </span>
+                                    </label>
 
                                     <!-- Input -->
-                                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                                    <input type="text" id="contact-search" placeholder="Cerca o inizia una nuova chat">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                             <div class="contact-item" v-for="(singleContact, IndexSingleContact) in contacts">
                                 <!-- <img class="avatar-image" src="img/avatar_io.jpg" alt=""> -->
                                 <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
-                                <span class="name">{{ singleContact.name }}</span>
+                                <span class="avatar-name">{{ singleContact.name }}</span>
                             </div>
                         </div>
                    </aside>
@@ -104,7 +104,7 @@
                             <div class="main-content-item item">
                                 <img class="avatar-image" src="img/avatar_3.jpg" alt="">
                                 <div class="text">
-                                    <span class="name">Samuele</span>
+                                    <span class="avatar-name">Samuele</span>
                                     <span class="last-access">Ultimo accesso oggi alle 19:57</span>
                                 </div>
                             </div>
@@ -127,26 +127,26 @@
                         <div class="main-content-mid">
                             <!-- Chat Messages -->
                             <div class="chat-msg received">
-                                <div>La Marianna va in campagna</div>
-                                <span>28/03/2020 10:10:40</span>
+                                <div class="chat-msg-text">La Marianna va in campagna</div>
+                                <span class="chat-msg-date">28/03/2020 10:10:40</span>
                             </div>
                             <div class="chat-msg sent">
-                                Sicuro di non aver sbagliato chat?
-                                <span>28/03/2020 10:20:10</span>
+                                <div class="chat-msg-text">Sicuro di non aver sbagliato chat?</div>
+                                <span class="chat-msg-date">28/03/2020 10:20:10</span>
                             </div>
                             <div class="chat-msg received">
-                                Ah scusa!
-                                <span>28/03/2020 16:15:22</span>
+                                <div class="chat-msg-text">Ah scusa!</div>
+                                <span class="chat-msg-date">28/03/2020 16:15:22</span>
                             </div>
                             <div class="chat-msg sent">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nam odio assumenda ducimus quos eius minima adipisci dolorum natus magnam, earum laboriosam iusto fugiat quisquam, voluptatem nihil aliquam libero amet.
-                                Consectetur soluta veniam pariatur doloribus rem facere alias tenetur autem? Adipisci, ipsum. Delectus voluptatum explicabo sed quas odit commodi, quo natus quis pariatur sunt possimus qui voluptas omnis dolore iusto.
-                                <span>28/03/2020 10:20:10</span>
+                                <div class="chat-msg-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nam odio assumenda ducimus quos eius minima adipisci dolorum natus magnam, earum laboriosam iusto fugiat quisquam, voluptatem nihil aliquam libero amet.
+                                Consectetur soluta veniam pariatur doloribus rem facere alias tenetur autem? Adipisci, ipsum. Delectus voluptatum explicabo sed quas odit commodi, quo natus quis pariatur sunt possimus qui voluptas omnis dolore iusto.</div>
+                                <span class="chat-msg-date">28/03/2020 10:20:10</span>
                             </div>
                             <div class="chat-msg received">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis vel nihil fuga, expedita sit numquam reprehenderit velit laborum sed ipsum rem corrupti incidunt temporibus ratione quod ducimus, vitae iusto exercitationem.
-                                Maiores illo eaque iure ipsa libero molestias dignissimos debitis sed alias. Iure, distinctio quo enim rerum dolorum necessitatibus vitae! Omnis ipsa officiis nisi. Molestiae recusandae ratione totam autem amet blanditiis.
-                                <span>28/03/2020 16:15:22</span>
+                                <div class="chat-msg-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis vel nihil fuga, expedita sit numquam reprehenderit velit laborum sed ipsum rem corrupti incidunt temporibus ratione quod ducimus, vitae iusto exercitationem.
+                                Maiores illo eaque iure ipsa libero molestias dignissimos debitis sed alias. Iure, distinctio quo enim rerum dolorum necessitatibus vitae! Omnis ipsa officiis nisi. Molestiae recusandae ratione totam autem amet blanditiis.</div>
+                                <span class="chat-msg-date">28/03/2020 16:15:22</span>
                             </div>
                         </div>
 

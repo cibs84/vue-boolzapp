@@ -28,6 +28,7 @@ img {
     background-color: #009588;
     height: 100vh;
     padding: 1.5rem 0;
+    min-width: 950px;
 }
 /* Person Item */
 .person-item {
@@ -38,6 +39,7 @@ img {
     height: 4rem;
     background-color: #eaeaea;
     border: 1px solid lightgray;
+    flex-shrink: 0;
 }
 .person-item .item {
     vertical-align: middle;
@@ -52,7 +54,7 @@ img {
 .person-item .item .text {
     vertical-align: middle;
 }
-.person-item .item span.name {
+.person-item .item span.avatar-name {
     font-weight: 500;
 }
 .person-item .item span.last-access {
@@ -72,8 +74,6 @@ img {
 
 /* MAIN */
 main {
-    border: 1px solid red;
-    background-color: lightgreen;
     height: 100%;
     display: flex;
 }
@@ -116,25 +116,23 @@ main {
     height: auto;
 }
 #sidebar .sidebar-header .filter-contacts > div {
-    background-color: white;
+    background-color: #fff;
     border-radius: 0.3rem;
-    border: 1px solid lightgray;
-    padding: 4.5px 1rem;
+    border: 1px solid #d3d3d361;
+    padding: 0.2rem 0rem 0.2rem 0.8rem;
 }
-#sidebar .sidebar-header .filter-contacts span.search-icon {
+#sidebar .sidebar-header .filter-contacts label.search-icon {
     border: none;
     font-size: 1rem;
     color: #b6b9bc;
-    margin: 0rem 1.7rem 0rem 0.6rem;
+    margin: 0rem 5.6% 0rem 0.3rem;
     vertical-align: bottom;
     cursor: pointer;
 }
 #sidebar .sidebar-header .filter-contacts input {
     border: none;
-    font-size: 1rem;
-    width: 80%;
-    vertical-align: middle;
     outline: none;
+    width: 78%;
 }
 /* Sidebar-Main */
 #sidebar .sidebar-main {
@@ -190,8 +188,8 @@ main {
     font-weight: 500;
     border-radius: 0.5rem;
     min-width: 11.5rem;
-    max-width: 50%;
-    margin-bottom: 0.2rem;
+    max-width: 60%;
+    margin-bottom: 1.5rem;
     flex-grow: 0;
 }
 .main-content-mid .chat-msg.received {
@@ -202,10 +200,10 @@ main {
     background-color: #d5f9ba;
     align-self: flex-end;
 }
-.main-content-mid .chat-msg div {
+.main-content-mid .chat-msg div.chat-msg-text {
     
 }
-.main-content-mid .chat-msg span {
+.main-content-mid .chat-msg span.chat-msg-date {
     display: block;
     text-align: right;
     color: #b7babd;
