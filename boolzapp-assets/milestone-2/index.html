@@ -8,6 +8,8 @@
 
     <!-- Link - Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!-- Link - Day.js -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <!-- Link - Fontawesome 6.1 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Link - style.css -->
@@ -100,11 +102,11 @@
                         <div class="main-content-top person-item">
                                 
                             <!-- User -->
-                            <div class="main-content-item item">
-                                <img class="avatar-image" src="img/avatar_3.jpg" alt="">
+                            <div class="main-content-item item" v-for="(singleContact, IndexSingleContact) in contacts" v-if="singleContact.visible">
+                                <img class="avatar-image" :src="`img/avatar${singleContact.avatar}.jpg`" alt="">
                                 <div class="text">
-                                    <span class="avatar-name">Samuele</span>
-                                    <span class="last-access">Ultimo accesso oggi alle 19:57</span>
+                                    <span class="avatar-name">{{singleContact.name}}</span>
+                                    <span class="last-access">{{getDate()}}</span>
                                 </div>
                             </div>
 

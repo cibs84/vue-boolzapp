@@ -90,8 +90,15 @@ var app = new Vue (
                             status: 'received'
                         }
                     ],
-                },
-            ]
+                }
+            ],
+            inputMessage: '',
+            newMessage: {
+                date: "",
+                text: "",
+                status: 'sent'
+            },
+            indexVisibleContact: null
         },
         methods: {
             setActiveContact(index) {
@@ -102,7 +109,43 @@ var app = new Vue (
                 this.contacts.forEach(singleContact => {
                     singleContact.visible = false;
                 });
-            }
+            },
+            checkIndexVisibleContact() {
+                // Per ogni contatto:
+                this.contacts.forEach((singleContact, indexSingleContact) => {
+                    // SE la proprietà visible è true ALLORA assegno il suo index a indexVisibleContact
+                    if (singleContact.visible) {
+                        this.indexVisibleContact = indexSingleContact;
+                    }
+                });
+            },
+            getDate() {
+                return dayjs().format("DD/MM/YYYY HH:mm:ss");
+            },
+            createNewMessage() {
+                // Prendo l'indice del contatto attualmente visibile per poi selezionare l'esatto array dove pushare
+                this.checkIndexVisibleContact();
+                // Aggiorno la data al momento esatto della creazione del nuovo messaggio
+                this.newMessage.date = this.getDate();
+                // Pusho il nuovo oggetto messaggio nell'array del contatto attivo al momento dell'invio
+                this.contacts[this.indexVisibleContact].messages.push({...this.newMessage});
+                // Resetto l'input per l'inserimento di un nuovo messaggio
+                this.newMessage.text = "";
+                // SE il messaggio è stato inviato da noi, dopo 1 sec. creo un nuovo messaggio di risposta
+                if (this.newMessage.status === "sent") {
+                    setTimeout(this.createNewReplyMessage, 1000);
+                // ALTRIMENTI resetto lo stato dell'oggetto newMessage su 'received' per prepararlo ad un nuovo invio da parte dell'utente
+                } else {
+                    this.newMessage.status = "sent";
+                }
+            },
+            // Crea uun messaggio di risposta automatico dopo l'invio di un nostro messaggio
+            createNewReplyMessage() {
+                this.newMessage.status = "received";
+                this.newMessage.text = "ok";
+                this.createNewMessage();
+                
+            },
         }
     }
 );

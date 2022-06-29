@@ -102,7 +102,10 @@ var app = new Vue (
                 this.contacts.forEach(singleContact => {
                     singleContact.visible = false;
                 });
-            }
+            },
+            getDate() {
+                return dayjs().format("DD/MM/YYYY HH:mm:ss");
+            },
         }
     }
 );
