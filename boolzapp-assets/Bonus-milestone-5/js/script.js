@@ -181,11 +181,8 @@ var app = new Vue (
                 this.indexClickedContact = indexSingleContact;
             },
             deleteClickedMessage(singleContact, indexClickedMessage) {
-                console.log('singleContact.messages: ', singleContact.messages);
-                console.log('indexClickedMessage: ', indexClickedMessage);
-                
-
                 singleContact.messages.splice(indexClickedMessage, 1);
+                this.showMessage = false;
             }
         }
     }
