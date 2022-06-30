@@ -23,6 +23,9 @@ img {
     height: 2.5rem;
     border-radius: 50%;
 }
+.show-element {
+    display: block !important;
+}
 /* App Wrapper */
 #app-wrapper {
     background-color: #009588;
@@ -54,7 +57,7 @@ img {
 .person-item .item .text {
     vertical-align: middle;
 }
-.person-item .item span.avatar-name {
+.person-item .item .contact-name {
     font-weight: 500;
 }
 .person-item .item span.last-access {
@@ -145,6 +148,8 @@ main {
     border-bottom: 1px solid #d3d3d3;
     flex-grow: 1;
     padding: 0.6rem;
+    display: flex;
+    position: relative;
 }
 #sidebar .sidebar-main .contact-item:hover,
 #sidebar .sidebar-main .contact-item.active {
@@ -154,9 +159,23 @@ main {
     vertical-align: middle;
     margin-right: 0.5rem;
 }
-#sidebar .sidebar-main .contact-item span {
-    vertical-align: top;
+#sidebar .sidebar-main .contact-item .avatar-text .contact-name {
     font-weight: 500;
+}
+#sidebar .sidebar-main .contact-item .avatar-text .text-last-msg {
+    color: #808080;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 5.5rem;
+}
+#sidebar .sidebar-main .contact-item .date-last-msg {
+    font-size: 0.8rem;
+    position: absolute;
+    top: 0.7rem;
+    right: 1rem;
+    color: #808080;
 }
 
 
@@ -187,6 +206,7 @@ main {
     max-width: 60%;
     margin-bottom: 1.5rem;
     flex-grow: 0;
+    position: relative;
 }
 .main-content-mid .chat-msg.received {
     background-color: white;
@@ -196,11 +216,39 @@ main {
     background-color: #d5f9ba;
     align-self: flex-end;
 }
+.main-content-mid .chat-msg .chat-msg-text {
+    margin-right: 1.7rem;
+}
 .main-content-mid .chat-msg span.chat-msg-date {
     display: block;
     text-align: right;
     color: #b7babd;
     font-size: 0.8rem;
+}
+.main-content-mid .chat-msg .icon-arrow {
+    display: none;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.7rem;
+    cursor: pointer;
+}
+.main-content-mid .chat-msg:hover .icon-arrow {
+    display: block;
+}
+.main-content-mid .chat-msg-options {
+    box-shadow: 0 0.5rem 1rem #00000026;
+    display: none;
+    padding: 1.2rem;
+    border-radius: 0.2rem;
+    position: absolute;
+    top: 1.7rem;
+    right: 0.5rem;
+    background-color: #fff;
+    border: 1px solid #d3d3d336;
+    z-index: 100;
+}
+.main-content-mid .chat-msg-options div:first-child {
+    margin-bottom: 1rem;
 }
 
 

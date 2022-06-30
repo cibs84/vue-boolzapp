@@ -104,6 +104,8 @@ var app = new Vue (
             },
             indexVisibleContact: null,
             inputFilterContacts: "",
+            indexClickedMessage: null,
+            showMessage: false
         },
         methods: {
             setActiveContact(index) {
@@ -167,6 +169,11 @@ var app = new Vue (
                         thisContact.shownByFilter = false;
                     }
                 });
+            },
+            setClickedMessage(indexSingleMsg) {
+                this.indexClickedMessage = indexSingleMsg;
+                this.showMessage = this.indexClickedMessage === indexSingleMsg;
+                // this.showMessage = !this.showMessage;
             }
         }
     }
