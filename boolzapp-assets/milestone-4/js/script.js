@@ -151,7 +151,6 @@ var app = new Vue (
                 this.newMessage.status = "received";
                 this.newMessage.text = "ok";
                 this.createNewMessage();
-                
             },
             showFilteredContacts() {
                 // Per ogni contatto:

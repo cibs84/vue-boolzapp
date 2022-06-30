@@ -78,7 +78,13 @@
                                     </label>
 
                                     <!-- Input -->
-                                    <input type="text" id="contact-search" placeholder="Cerca o inizia una nuova chat" v-model="inputFilterContacts" @keyup="showFilteredContacts()">
+                                    <input 
+                                        type="text" 
+                                        id="contact-search" 
+                                        placeholder="Cerca o inizia una nuova chat" 
+                                        v-model="inputFilterContacts" 
+                                        @keyup="showFilteredContacts()"
+                                    >
                                 </div>
                             </div>
                         </div>
@@ -87,7 +93,13 @@
                         <!-- Sidebar - Main -->
                         <div class="sidebar-main">
                             <!-- Contact -->
-                            <div class="contact-item" :class="{ active: singleContact.visible }" v-for="(singleContact, IndexSingleContact) in contacts" v-if="singleContact.shownByFilter" @click="setActiveContact(IndexSingleContact)">
+                            <div 
+                                class="contact-item" 
+                                :class="{ active: singleContact.visible }" 
+                                v-for="(singleContact, IndexSingleContact) in contacts" 
+                                v-if="singleContact.shownByFilter" 
+                                @click="setActiveContact(IndexSingleContact)"
+                            >
                                 <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
                                 <span class="avatar-name">{{ singleContact.name }}</span>
                             </div>
@@ -102,7 +114,11 @@
                         <div class="main-content-top person-item">
                                 
                             <!-- User -->
-                            <div class="main-content-item item" v-for="(singleContact, IndexSingleContact) in contacts" v-if="singleContact.visible">
+                            <div 
+                                class="main-content-item item" 
+                                v-for="(singleContact, IndexSingleContact) in contacts" 
+                                v-if="singleContact.visible"
+                            >
                                 <img class="avatar-image" :src="`img/avatar${singleContact.avatar}.jpg`" alt="">
                                 <div class="text">
                                     <span class="avatar-name">{{singleContact.name}}</span>
@@ -125,9 +141,17 @@
                         </div>
 
                         <!-- Main Content - MIDDLE -->
-                        <div class="main-content-mid" v-for="(singleContact, indexSingleContact) in contacts" v-if="singleContact.visible">
+                        <div 
+                            class="main-content-mid" 
+                            v-for="(singleContact, indexSingleContact) in contacts" 
+                            v-if="singleContact.visible"
+                        >
                             <!-- Chat Messages -->
-                            <div class="chat-msg" :class="{received: singleMsg.status === 'received', sent: singleMsg.status === 'sent'}" v-for="singleMsg in singleContact.messages">
+                            <div 
+                                class="chat-msg" 
+                                :class="{received: singleMsg.status === 'received', sent: singleMsg.status === 'sent'}" 
+                                v-for="singleMsg in singleContact.messages"
+                            >
                                 <div class="chat-msg-text">{{singleMsg.text}}</div>
                                 <span class="chat-msg-date">{{singleMsg.date}}</span>
                             </div>
@@ -143,7 +167,12 @@
                                 </span>
                                 
                                 <!-- Input -->
-                                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage.text" @keyup.enter="createNewMessage()">
+                                <input 
+                                    type="text" 
+                                    placeholder="Scrivi un messaggio" 
+                                    v-model="newMessage.text" 
+                                    @keyup.enter="createNewMessage()"
+                                >
                                 
                                 <!-- Icon -->
                                 <span class="icon">
