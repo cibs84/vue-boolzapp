@@ -247,6 +247,9 @@ main {
     border: 1px solid #d3d3d336;
     z-index: 100;
 }
+.main-content-mid .chat-msg-options div {
+    cursor: pointer;
+}
 .main-content-mid .chat-msg-options div:first-child {
     margin-bottom: 1rem;
 }

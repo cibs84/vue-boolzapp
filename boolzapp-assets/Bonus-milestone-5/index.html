@@ -173,7 +173,7 @@
                                     v-if="indexSingleMsg === indexClickedMessage && indexSingleContact === indexClickedContact"
                                 >
                                     <div class="info-msg">Message Info</div>
-                                    <div class="delete-msg">Delete message</div>
+                                    <div class="delete-msg" @click="deleteClickedMessage(singleContact, indexClickedMessage)">Delete message</div>
                                 </div>
                             </div>
                         </div>
