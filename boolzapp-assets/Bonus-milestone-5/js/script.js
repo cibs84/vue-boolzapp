@@ -96,7 +96,6 @@ var app = new Vue (
                     ],
                 }
             ],
-            inputMessage: '',
             newMessage: {
                 date: "",
                 text: "",
@@ -105,7 +104,8 @@ var app = new Vue (
             indexVisibleContact: null,
             inputFilterContacts: "",
             indexClickedMessage: null,
-            showMessage: false
+            showMessage: false,
+            indexClickedContact: null
         },
         methods: {
             setActiveContact(index) {
@@ -170,10 +170,15 @@ var app = new Vue (
                     }
                 });
             },
-            setClickedMessage(indexSingleMsg) {
+            setClickedMessage(singleContact, singleMsg, indexSingleContact, indexSingleMsg) {
+                if (indexSingleMsg !== this.indexClickedMessage ) {
+                    this.showMessage = true;
+                } else {
+                    this.showMessage = !this.showMessage;
+                }
+
                 this.indexClickedMessage = indexSingleMsg;
-                this.showMessage = this.indexClickedMessage === indexSingleMsg;
-                // this.showMessage = !this.showMessage;
+                this.indexClickedContact = indexSingleContact;
             }
         }
     }

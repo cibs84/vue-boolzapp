@@ -164,10 +164,14 @@
                                 <span class="chat-msg-date">{{singleMsg.date}}</span>
                                 
                                 <!-- Options Message -->
-                                <span class="icon-arrow" @click="setClickedMessage(indexSingleMsg)">
+                                <span class="icon-arrow" @click="setClickedMessage(singleContact, singleMsg, indexSingleContact, indexSingleMsg)">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
-                                    <div class="chat-msg-options" :class="{ 'show-element': showMessage }">
+                                <div 
+                                    class="chat-msg-options" 
+                                    :class="{ 'show-element': showMessage }"
+                                    v-if="indexSingleMsg === indexClickedMessage && indexSingleContact === indexClickedContact"
+                                >
                                     <div class="info-msg">Message Info</div>
                                     <div class="delete-msg">Delete message</div>
                                 </div>
