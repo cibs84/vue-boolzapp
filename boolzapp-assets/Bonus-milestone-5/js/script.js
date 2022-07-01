@@ -170,7 +170,7 @@ var app = new Vue (
                     }
                 });
             },
-            setClickedMessage(singleContact, singleMsg, indexSingleContact, indexSingleMsg) {
+            setClickedMessage(indexSingleContact, indexSingleMsg) {
                 if (indexSingleMsg !== this.indexClickedMessage ) {
                     this.showMessage = true;
                 } else {
@@ -183,7 +183,31 @@ var app = new Vue (
             deleteClickedMessage(singleContact, indexClickedMessage) {
                 singleContact.messages.splice(indexClickedMessage, 1);
                 this.showMessage = false;
+            },
+            clickAll() {
+                // const allWithoutClickedMsg = document.querySelector('*:not(.chat-msg-options)');
+                // allWithoutClickedMsg.addEventListener('click', function() {
+                //     if (this.showMessage) {
+                //         return this.showMessage = false;
+                //     }
+                //     console.log('ciao');
+                // });
+
+                // if (this.showMessage) {
+                //     this.showMessage = false;
+                // }
+                // console.log('ciao');
             }
-        }
+        },
+        // mounted() {
+        //     console.log(this.showMessage);
+        //     const allWithoutClickedMsg = document.querySelector('*:not(.chat-msg-options)');
+        //     allWithoutClickedMsg.addEventListener('click', function() {
+        //         if (app.showMessage) {
+        //             return app.showMessage = false;
+        //         }
+        //         console.log('ciao');
+        //     });
+        // }
     }
 );

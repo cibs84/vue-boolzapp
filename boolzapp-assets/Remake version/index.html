@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>boolzapp</title>
+    <title>Title</title>
 
     <!-- Link - Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
@@ -20,7 +20,7 @@
     <div id="root">
 
         <!-- App Wrapper -->
-        <div id="app-wrapper" @click="clickAll()">
+        <div id="app-wrapper">
 
             <div class="container">
 
@@ -62,7 +62,7 @@
                                 </span>
 
                                 <!-- Text -->
-                                <span class="text">
+                                <span>
                                     Ricevi notifiche di nuovi messaggi
                                     <a href="#">Attiva notifiche desktop</a>
                                 </span>
@@ -73,17 +73,16 @@
                             <div class="filter-contacts">
                                 <div>
                                     <!-- Icon -->
-                                    <label class="search-icon" for="contact-search">
+                                    <span class="search-icon">
                                         <i class="fa-solid fa-magnifying-glass"></i>
-                                    </label>
+                                    </span>
 
                                     <!-- Input -->
                                     <input 
                                         type="text" 
-                                        id="contact-search" 
                                         placeholder="Cerca o inizia una nuova chat" 
-                                        v-model="inputFilterContacts" 
-                                        @keyup="showFilteredContacts()"
+                                        v-model="inputContactsFilter"
+                                        @keyup="filterVisibleContacts()"
                                     >
                                 </div>
                             </div>
@@ -95,19 +94,19 @@
                             <!-- Contact -->
                             <div 
                                 class="contact-item" 
-                                :class="{ active: singleContact.visible }" 
-                                v-for="(singleContact, IndexSingleContact) in contacts" 
-                                v-if="singleContact.shownByFilter" 
-                                @click="setActiveContact(IndexSingleContact)"
+                                :class="{'active': indexActiveContact === indexSingleContact}" 
+                                v-for="(singleContact, indexSingleContact) in contacts"
+                                @click="setIndexActiveContact(indexSingleContact)"
+                                v-if="singleContact.visible"
                             >
-                                <img class="avatar-image" :src="'img/avatar'+ singleContact.avatar + '.jpg'" alt="">
+                                <img class="avatar-image" :src="`img/avatar${singleContact.avatar}.jpg`">
                                 <div class="avatar-text">
-                                    <div class="contact-name">{{ singleContact.name }}</div>
-                                    <div class="text-last-msg" v-if="singleContact.messages.length > 0">{{ singleContact.messages[singleContact.messages.length-1].text }}</div>
-                                    <div class="text-no-msg" v-else>Al momento non ci sono messaggi</div>
+                                    <div class="contact-name">{{singleContact.name}}</div>
+                                    <div class="text-last-msg">{{singleContact.messages[singleContact.messages.length-1].text}}</div>
+                                    <!-- <div class="text-no-msg"></div> -->
                                 </div>
 
-                                <span class="date-last-msg" v-if="singleContact.messages.length > 0">{{ singleContact.messages[singleContact.messages.length-1].date }}</span>
+                                <span class="date-last-msg">{{singleContact.messages[singleContact.messages.length-1].date}}</span>
                             </div>
                         </div>
                    </aside>
@@ -120,16 +119,12 @@
                         <div class="main-content-top person-item">
                                 
                             <!-- User -->
-                            <div 
-                                class="main-content-item item" 
-                                v-for="(singleContact, IndexSingleContact) in contacts" 
-                                v-if="singleContact.visible"
-                            >
-                                <img class="avatar-image" :src="`img/avatar${singleContact.avatar}.jpg`" alt="">
+                            <div class="main-content-item item">
+                                <img class="avatar-image" :src="`img/avatar${contacts[indexActiveContact].avatar}.jpg`">
                                 <div class="text">
-                                    <span class="contact-name">{{singleContact.name}}</span>
-                                    <span class="last-access"  v-if="singleContact.messages.length > 0">{{singleContact.messages[singleContact.messages.length-1].date}}</span>
-                                    <span class="last-access"  v-else>Ultimo accesso sconosciuto</span>
+                                    <span class="contact-name">{{contacts[indexActiveContact].name}}</span>
+                                    <span class="last-access" v-if="contacts[indexActiveContact].messages.length > 0">{{contacts[indexActiveContact].messages[contacts[indexActiveContact].messages.length-1].date}}</span>
+                                    <span class="last-access" v-else>Ultimo accesso sconosciuto</span>
                                 </div>
                             </div>
 
@@ -148,34 +143,29 @@
                         </div>
 
                         <!-- Main Content - MIDDLE -->
-                        <div 
-                            class="main-content-mid" 
-                            v-for="(singleContact, indexSingleContact) in contacts" 
-                            v-if="singleContact.visible"
-                        >
+                        <div class="main-content-mid" v-for="(singleContact, indexSingleContact) in contacts" v-if="indexSingleContact === indexActiveContact">
+                            
                             <!-- Chat Messages -->
                             <div 
                                 class="chat-msg" 
-                                :class="{
-                                    received: singleMsg.status === 'received', 
-                                    sent: singleMsg.status === 'sent',
-                                }" 
-                                v-for="(singleMsg, indexSingleMsg) in singleContact.messages"
+                                :class="singleMessage.status"
+                                v-for="(singleMessage, indexSingleMessage) in contacts[indexActiveContact].messages"
                             >
-                                <div class="chat-msg-text">{{singleMsg.text}}</div>
-                                <span class="chat-msg-date">{{singleMsg.date}}</span>
+                                <div class="chat-msg-text">{{ singleMessage.text }}</div>
+                                <span class="chat-msg-date">{{ singleMessage.date }}</span>
                                 
                                 <!-- Options Message -->
-                                <span class="icon-arrow" @click="setClickedMessage(indexSingleContact, indexSingleMsg)">
+                                <span class="icon-arrow" @click="toggleShowOptionsMessage(); assignIndexClickedMessage(indexSingleMessage, indexActiveContact);">
                                     <i class="fas fa-angle-down"></i>
                                 </span>
+                                
                                 <div 
                                     class="chat-msg-options" 
-                                    :class="{ 'show-element': showMessage }"
-                                    v-if="indexSingleMsg === indexClickedMessage && indexSingleContact === indexClickedContact"
+                                    :class="{'show-element': optionMsgIsVisible}"
+                                    v-if="indexSingleMessage === indexClickedMessage && indexClickedContact === indexActiveContact"
                                 >
                                     <div class="info-msg">Message Info</div>
-                                    <div class="delete-msg" @click="deleteClickedMessage(singleContact, indexClickedMessage)">Delete message</div>
+                                    <div class="delete-msg">Delete message</div>
                                 </div>
                             </div>
                         </div>
@@ -193,8 +183,8 @@
                                 <input 
                                     type="text" 
                                     placeholder="Scrivi un messaggio" 
-                                    v-model="newMessage.text" 
-                                    @keyup.enter="createNewMessage()"
+                                    v-model="inputTextNewMessage"
+                                    @keyup.enter="sendNewMessage()"
                                 >
                                 
                                 <!-- Icon -->

@@ -1,0 +1,283 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* COMMON */
+body {
+    background-color: lightblue;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, "Fira Sans", sans-serif;
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+img {
+    max-width: 100%;
+}
+.avatar-image {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+.show-element {
+    display: block !important;
+}
+/* App Wrapper */
+#app-wrapper {
+    background-color: #009588;
+    height: 100vh;
+    padding: 1.5rem 0;
+}
+/* Person Item */
+.person-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+    height: 4rem;
+    background-color: #eaeaea;
+    border: 1px solid lightgray;
+}
+.person-item .item {
+    vertical-align: middle;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.person-item .item img {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+.person-item .item .text {
+    vertical-align: middle;
+}
+.person-item .item .contact-name {
+    font-weight: 500;
+}
+.person-item .item span.last-access {
+    display: block;
+    font-size: 0.8rem;
+}
+.person-item .icons span {
+    margin-left: 1rem;
+    color: #b1b1b1;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.person-item .icons span:last-child {
+    margin-right: 0.5rem;
+}
+
+
+/* MAIN */
+main {
+    border: 1px solid red;
+    background-color: lightgreen;
+    height: 100%;
+    display: flex;
+}
+
+
+/* SIDEBAR */
+#sidebar {
+    width: calc(100% / 3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/* Sidebar-Header */
+#sidebar .sidebar-header .notify-settings {
+    background-color: #8edafb;
+    display: flex;
+    align-items: center;
+    padding: 0.6rem;
+    cursor: pointer;
+}
+#sidebar .sidebar-header .notify-settings a {
+    display: block;
+    color: #517889;
+    font-size: 0.7rem;
+}
+#sidebar .sidebar-header .notify-settings span.bell-icon {
+    background-color: #fff;
+    border-radius: 50%;
+    color: #8edafb;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+#sidebar .sidebar-header .filter-contacts {
+    padding: 0.4rem;
+    background-color: #fafafa;
+    height: auto;
+}
+#sidebar .sidebar-header .filter-contacts > div {
+    background-color: white;
+    border-radius: 0.3rem;
+    border: 1px solid lightgray;
+    padding: 4.5px 1rem;
+}
+#sidebar .sidebar-header .filter-contacts span.search-icon {
+    border: none;
+    font-size: 1rem;
+    color: #b6b9bc;
+    margin: 0rem 1.7rem 0rem 0.6rem;
+    vertical-align: middle;
+}
+#sidebar .sidebar-header .filter-contacts input {
+    border: none;
+    font-size: 1rem;
+    width: 80%;
+    vertical-align: middle;
+    outline: none;
+}
+/* Sidebar-Main */
+#sidebar .sidebar-main {
+    flex-grow: 1;
+    overflow-y: auto;
+    background: #fff;
+}
+#sidebar .sidebar-main .contact-item {
+    cursor: pointer;
+    border-bottom: 1px solid #d3d3d3;
+    padding: 0.6rem;
+    display: flex;
+    position: relative;
+}
+#sidebar .sidebar-main .contact-item.active,
+#sidebar .sidebar-main .contact-item:hover {
+    background-color: #e9ebeb;
+}
+#sidebar .sidebar-main .contact-item .avatar-image {
+    margin-right: 0.5rem;
+}
+#sidebar .sidebar-main .contact-item .avatar-text .contact-name {
+    font-weight: 500;
+}
+#sidebar .sidebar-main .contact-item .avatar-text .text-last-msg {
+    color: #808080;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 5.5rem;
+}
+#sidebar .sidebar-main .contact-item .date-last-msg {
+    font-size: 0.8rem;
+    position: absolute;
+    top: 0.7rem;
+    right: 1rem;
+    color: #808080;
+}
+
+
+/* Main Content */
+#main-content {
+    width: calc(100% / 3 * 2);
+    height: 100%;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    background-image: url(../img/mine.jpg);
+}
+/* Main Content - TOP */
+.main-content-top {
+    
+}
+/* Main Content - MIDDLE */
+.main-content-mid {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 2.5rem 4.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.main-content-mid .chat-msg {
+    padding: 6px 7px 8px 9px;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    min-width: 11.5rem;
+    max-width: 60%;
+    margin-bottom: 1.5rem;
+    flex-grow: 0;
+    position: relative;
+}
+.main-content-mid .chat-msg.received {
+    background-color: white;
+    align-self: flex-start;
+}
+.main-content-mid .chat-msg.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+}
+.main-content-mid .chat-msg .chat-msg-text {
+    margin-right: 1.7rem;
+}
+.main-content-mid .chat-msg span.chat-msg-date {
+    display: block;
+    text-align: right;
+    color: #b7babd;
+    font-size: 0.8rem;
+}
+.main-content-mid .chat-msg .icon-arrow {
+    display: none;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.7rem;
+    cursor: pointer;
+}
+.main-content-mid .chat-msg:hover .icon-arrow {
+    display: block;
+}
+.main-content-mid .chat-msg-options {
+    box-shadow: 0 0.5rem 1rem #00000026;
+    display: none;
+    padding: 1.2rem;
+    border-radius: 0.2rem;
+    position: absolute;
+    top: 1.7rem;
+    right: 0.5rem;
+    background-color: #fff;
+    border: 1px solid #d3d3d336;
+    z-index: 100;
+}
+.main-content-mid .chat-msg-options div:first-child {
+    margin-bottom: 1rem;
+}
+.main-content-mid .chat-msg-options div {
+    cursor: pointer;
+}
+
+
+/* Main Content - BOTTOM */
+.main-content-bottom {
+    height: 4rem;
+    background-color: rgba(234, 234, 234, 0.5);
+    border: 1px solid lightgray;
+}
+.main-content-bottom .input-group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 4rem;
+}
+.main-content-bottom .input-group input {
+    flex-grow: 1;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    border: 1px solid #d3d3d3;
+    padding: 13.5px 1rem;
+    outline: none;
+}
+.main-content-bottom .input-group .icon {
+    margin: 0 1.5rem;
+    font-size: 1.5rem;
+    color: #6a7376;
+}
+
+
