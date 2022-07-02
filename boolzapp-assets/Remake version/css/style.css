@@ -75,8 +75,6 @@ img {
 
 /* MAIN */
 main {
-    border: 1px solid red;
-    background-color: lightgreen;
     height: 100%;
     display: flex;
 }
@@ -227,8 +225,9 @@ main {
     display: none;
     position: absolute;
     top: 0.3rem;
-    right: 0.7rem;
+    right: 0.2rem;
     cursor: pointer;
+    padding: 0 0.5rem;
 }
 .main-content-mid .chat-msg:hover .icon-arrow {
     display: block;

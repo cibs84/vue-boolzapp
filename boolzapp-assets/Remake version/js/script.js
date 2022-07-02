@@ -105,6 +105,7 @@ var app = new Vue (
         methods: {
             setIndexActiveContact(indexSingleContact) {
                 this.indexActiveContact = indexSingleContact;
+                this.optionMsgIsVisible = false;
             },
             createNewMessage(textMessage, statusMessage) {
                 const newMessage = {
@@ -139,8 +140,21 @@ var app = new Vue (
                     }
                 });
             },
-            toggleShowOptionsMessage() {
-                this.optionMsgIsVisible = !this.optionMsgIsVisible;
+            toggleShowOptionsMessage(indexSingleMessage, indexSingleContact) {
+                console.log('this.indexClickedMessage: ', this.indexClickedMessage);
+                console.log('indexSingleMessage: ', indexSingleMessage);
+                console.log('---------------------------------------------')
+                if (this.indexClickedMessage !== indexSingleMessage && this.optionMsgIsVisible) {
+                    console.log('if')
+                    this.optionMsgIsVisible = true;
+                // } else if (this.indexActiveContact !== this.indexActiveContact && this.optionMsgIsVisible) {
+                //     console.log('else if')
+                //     this.optionMsgIsVisible = false;
+                } else {
+                    console.log('else')
+                    this.optionMsgIsVisible = !this.optionMsgIsVisible;
+                }
+                console.log('*********************************************')
             },
             assignIndexClickedMessage(indexSingleMessage) {
                 this.indexClickedMessage = indexSingleMessage;

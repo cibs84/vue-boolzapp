@@ -143,7 +143,11 @@
                         </div>
 
                         <!-- Main Content - MIDDLE -->
-                        <div class="main-content-mid" v-for="(singleContact, indexSingleContact) in contacts" v-if="indexSingleContact === indexActiveContact">
+                        <div 
+                            class="main-content-mid" 
+                            v-for="(singleContact, indexSingleContact) in contacts" 
+                            v-if="indexSingleContact === indexActiveContact"
+                        >
                             
                             <!-- Chat Messages -->
                             <div 
@@ -155,7 +159,11 @@
                                 <span class="chat-msg-date">{{ singleMessage.date }}</span>
                                 
                                 <!-- Options Message -->
-                                <span class="icon-arrow" @click="toggleShowOptionsMessage(); assignIndexClickedMessage(indexSingleMessage, indexActiveContact);">
+                                <span 
+                                    class="icon-arrow" 
+                                    @click="toggleShowOptionsMessage(indexSingleMessage, indexSingleContact); 
+                                            assignIndexClickedMessage(indexSingleMessage, indexActiveContact);"
+                                >
                                     <i class="fas fa-angle-down"></i>
                                 </span>
                                 
