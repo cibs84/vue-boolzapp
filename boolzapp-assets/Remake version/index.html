@@ -102,11 +102,11 @@
                                 <img class="avatar-image" :src="`img/avatar${singleContact.avatar}.jpg`">
                                 <div class="avatar-text">
                                     <div class="contact-name">{{singleContact.name}}</div>
-                                    <div class="text-last-msg">{{singleContact.messages[singleContact.messages.length-1].text}}</div>
-                                    <!-- <div class="text-no-msg"></div> -->
+                                    <div class="text-last-msg" v-if="singleContact.messages.length > 0">{{singleContact.messages[singleContact.messages.length-1].text}}</div>
+                                    <div class="text-no-msg" v-else>Al momento non ci sono messaggi</div>
                                 </div>
 
-                                <span class="date-last-msg">{{singleContact.messages[singleContact.messages.length-1].date}}</span>
+                                <span class="date-last-msg" v-if="singleContact.messages.length > 0">{{singleContact.messages[singleContact.messages.length-1].date}}</span>
                             </div>
                         </div>
                    </aside>
@@ -153,7 +153,7 @@
                             <div 
                                 class="chat-msg" 
                                 :class="singleMessage.status"
-                                v-for="(singleMessage, indexSingleMessage) in contacts[indexActiveContact].messages"
+                                v-for="(singleMessage, indexSingleMessage) in singleContact.messages"
                             >
                                 <div class="chat-msg-text">{{ singleMessage.text }}</div>
                                 <span class="chat-msg-date">{{ singleMessage.date }}</span>
@@ -161,8 +161,8 @@
                                 <!-- Options Message -->
                                 <span 
                                     class="icon-arrow" 
-                                    @click="toggleShowOptionsMessage(indexSingleMessage, indexSingleContact); 
-                                            assignIndexClickedMessage(indexSingleMessage, indexActiveContact);"
+                                    @click="assignIndexClickedMessage(indexSingleMessage); 
+                                            toggleShowOptionsMessage();"
                                 >
                                     <i class="fas fa-angle-down"></i>
                                 </span>
@@ -170,10 +170,10 @@
                                 <div 
                                     class="chat-msg-options" 
                                     :class="{'show-element': optionMsgIsVisible}"
-                                    v-if="indexSingleMessage === indexClickedMessage && indexClickedContact === indexActiveContact"
+                                    v-if="indexSingleMessage === indexClickedMessage"
                                 >
                                     <div class="info-msg">Message Info</div>
-                                    <div class="delete-msg">Delete message</div>
+                                    <div class="delete-msg" @click="deleteMessage(indexSingleMessage, singleContact)">Delete message</div>
                                 </div>
                             </div>
                         </div>

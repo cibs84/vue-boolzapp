@@ -16,6 +16,7 @@ var app = new Vue (
             inputContactsFilter: "",
             optionMsgIsVisible: false,
             indexClickedMessage: null,
+            differentPreviousClickedMessage: false,
             contacts: [
                 {
                     name: 'Michele',
@@ -105,6 +106,7 @@ var app = new Vue (
         methods: {
             setIndexActiveContact(indexSingleContact) {
                 this.indexActiveContact = indexSingleContact;
+                // Chiudo la tendina delle opzioni del messaggio in chat in modo da non lasciarla aperta quando si cambia contatto
                 this.optionMsgIsVisible = false;
             },
             createNewMessage(textMessage, statusMessage) {
@@ -130,7 +132,6 @@ var app = new Vue (
             filterVisibleContacts() {
                 this.contacts.forEach(contact => {
                     const inputContactsFilterLower = this.inputContactsFilter.toLowerCase();
-
                     const contactNameLower = contact.name.toLowerCase();
 
                     if (!contactNameLower.includes(inputContactsFilterLower)) {
@@ -140,25 +141,28 @@ var app = new Vue (
                     }
                 });
             },
-            toggleShowOptionsMessage(indexSingleMessage, indexSingleContact) {
-                console.log('this.indexClickedMessage: ', this.indexClickedMessage);
-                console.log('indexSingleMessage: ', indexSingleMessage);
-                console.log('---------------------------------------------')
-                if (this.indexClickedMessage !== indexSingleMessage && this.optionMsgIsVisible) {
-                    console.log('if')
-                    this.optionMsgIsVisible = true;
-                // } else if (this.indexActiveContact !== this.indexActiveContact && this.optionMsgIsVisible) {
-                //     console.log('else if')
-                //     this.optionMsgIsVisible = false;
+            assignIndexClickedMessage(indexSingleMessage) {
+                // Stabilisco SE il messaggio cliccato è uguale a quello precedentemente cliccato
+                if (this.indexClickedMessage !== indexSingleMessage) {
+                    this.differentPreviousClickedMessage = true;
                 } else {
-                    console.log('else')
+                    this.differentPreviousClickedMessage = false;
+                }
+                // Riassegno l'indice del messaggio cliccato
+                this.indexClickedMessage = indexSingleMessage;
+            },
+            toggleShowOptionsMessage() {
+                // SE il click è su un messaggio differente da quello cliccato in precedenza E la tendina delle opzioni del messaggio è visibile ALLORA mantiene la tendina visibile
+                if (this.differentPreviousClickedMessage && this.optionMsgIsVisible) {
+                    this.optionMsgIsVisible = true;
+                // ALTRIMENTI attiva la modalità toggle sulla proprietà di visibilità della tendina
+                } else {
                     this.optionMsgIsVisible = !this.optionMsgIsVisible;
                 }
-                console.log('*********************************************')
             },
-            assignIndexClickedMessage(indexSingleMessage) {
-                this.indexClickedMessage = indexSingleMessage;
-                this.indexClickedContact = this.indexActiveContact;
+            deleteMessage(indexSingleMessage, singleContact) {
+                singleContact.messages.splice(indexSingleMessage, 1);
+                this.optionMsgIsVisible = false;
             }
         }
     }
